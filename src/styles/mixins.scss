@@ -1,0 +1,23 @@
+@import "variables";
+
+
+@mixin title{
+  color: var(--color-logo-text);
+  font-size: 1.5rem;
+  font-weight: 800;
+  letter-spacing: 0.24px;
+}
+
+//@mixin subTitle{
+//  color: var(--color-logo-text);
+//  font-size: 24px;
+//  font-weight: 800;
+//  letter-spacing: 0.24px;
+//}
+
+@mixin text{
+  color:var(--color-primary-text);
+  font-size: 1rem;
+  font-weight: 700;
+  letter-spacing: 0.21px;
+}

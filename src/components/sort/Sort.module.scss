@@ -1,0 +1,80 @@
+@import "../../styles";
+
+.sort {
+  position: relative;
+
+  &Label {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+
+    &Icon {
+      margin-right: 8px;
+    }
+
+    b {
+      margin-right: 8px;
+    }
+
+    span {
+      color: var(--color-accent);
+      border-bottom: 1px dashed var(--color-accent);
+      cursor: pointer;
+      width: 80px;
+      text-align: center;
+    }
+  }
+
+  &Popup {
+    position: absolute;
+    right: 0;
+    margin-top: 15px;
+    background: #ffffff;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.09);
+    border-radius: 10px;
+    overflow: hidden;
+    padding: 10px 0;
+    width: 120px;
+
+    &Item {
+      padding: 12px 20px;
+      cursor: pointer;
+
+      &Active,
+      &:hover {
+        background: var(--bgc-sort);
+      }
+
+      &Active {
+        font-weight: bold;
+        color: var(--color-accent);
+      }
+    }
+
+    ul {
+      //overflow: hidden;
+
+      //li {
+      //  padding: 12px 20px;
+      //  cursor: pointer;
+      //
+      //  &.active,
+      //  &:hover {
+      //    background: var(--bgc-sort);
+      //  }
+      //
+      //  &.active {
+      //    font-weight: bold;
+      //    color: var(--color-accent);
+      //  }
+      //}
+    }
+  }
+
+  @include medium {
+    &Popup {
+      width: 160px;
+    }
+  }
+}
+

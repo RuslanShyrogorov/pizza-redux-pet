@@ -1,0 +1,47 @@
+@import "../../../styles";
+.emptyBasket{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 163px 0;
+
+  &Title{
+    @include title;
+    font-size: 2.29rem;
+    font-weight: 700;
+    letter-spacing: 0.32px;
+    color: var(--color-black-text);
+    margin-bottom: 10px;
+  }
+
+  &Text{
+    @include text;
+    color: var(--color-text-emptyBasket);
+    font-size: 1.29rem;
+    font-weight: 400;
+    line-height: 1.45;
+    letter-spacing: 0.18px;
+    text-align: center;
+    margin-bottom: 47px;
+  }
+
+  &Img{
+    width: 300px;
+    height: 255px;
+    margin-bottom: 74px;
+  }
+
+  &Btn{
+    @include text;
+    background-color: var(--bgc-btn-select);
+    color: var(--color-white-text);
+    text-align: center;
+    font-size: 1.14rem;
+    letter-spacing: 0.24px;
+    min-width: 210px;
+    padding: 15px 10px;
+    border-radius: 30px;
+  }
+
+}

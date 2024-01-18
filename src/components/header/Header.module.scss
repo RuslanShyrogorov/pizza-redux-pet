@@ -1,0 +1,107 @@
+@import "../../styles";
+
+.header {
+  position: relative;
+
+  &::after {
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 1px;
+    background-color: var(--bgc-color-divider);
+    left: 0;
+    bottom: 0;
+  }
+
+  &Container {
+    padding: 10px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  &Logo {
+    display: flex;
+    gap: 17px;
+    justify-content: center;
+    align-items: center;
+  }
+
+  &Img {
+    width: 38px;
+    height: 38px;
+  }
+
+  &Title {
+    @include title;
+    text-transform: uppercase;
+    font-size: 1rem;
+  }
+
+  &Text {
+    @include text;
+    color: var(--color-gray-text);
+    font-size: 0.9rem;
+    font-weight: 400;
+  }
+
+  @include sm {
+    &Container {
+      justify-content: space-between;
+    }
+  }
+
+  @include medium {
+    &Container {
+      padding: 30px 20px 25px 20px;
+    }
+
+    &Title {
+      font-size: 1.5rem;
+    }
+
+    &Text {
+      font-size: 1rem;
+    }
+  }
+
+  @include large {
+    &Container {
+      padding: 50px 30px 35px 30px;
+    }
+  }
+
+
+}
+
+.button {
+  @include text;
+  font-size: 0.8rem;
+  font-weight: 400;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 8px;
+  padding: 5px 17px;
+  border: none;
+  color: var(--color-white-text);
+  border-radius: 30px;
+  background: var(--color-accent);
+
+  &Divider {
+    background: var(--bgc-btn-devider);
+    width: 1px;
+    height: 25px;
+  }
+}
+
+@include medium {
+  .button {
+    padding: 12px 23px;
+    font-size: 1rem;
+    font-weight: 700;
+    gap: 13px;
+  }
+}

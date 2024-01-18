@@ -1,0 +1,114 @@
+@import "../../styles";
+
+.pizza {
+
+  &Container {
+    padding: 10px;
+  }
+
+  &Menu{
+    //display: flex;
+  }
+
+  &MenuBtnList {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-bottom: 20px;
+  }
+
+  &Title {
+    @include title;
+    margin-bottom: 20px;
+    font-size: 1.5rem;
+    font-weight: 700;
+    letter-spacing: 0.32px;
+  }
+
+  &List {
+    display: grid;
+    gap: 40px;
+    @include medium {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 20px;
+    }
+
+    @include large {
+      grid-template-columns: repeat(3, 1fr);
+      row-gap: 30px;
+    }
+
+    @include desktop {
+      grid-template-columns: repeat(4, 1fr);
+    }
+  }
+
+  &Button {
+    @include text;
+    padding: 5px 10px;
+    border: none;
+    border-radius: 30px;
+    background-color: var(--bgc-gray-btn);
+    font-size: 0.8rem;
+    font-weight: 400;
+    letter-spacing: 0.24px;
+    transition: all 250ms ease-in-out;
+
+    &:hover, &:focus, &Active {
+      color: var(--color-white-text);
+      background-color: var(--bgc-btn-select);
+    }
+  }
+
+  &SortText {
+    @include text;
+    font-size: 0.875rem;
+    margin-bottom: 20px;
+    text-align: end;
+
+    &Accent {
+      font-weight: 400;
+      color: var(--color-accent);
+      border-bottom: 1px dotted;
+    }
+  }
+
+  @include medium {
+    &Container {
+      padding: 30px 20px 25px 20px;
+    }
+
+    &Menu {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 32px;
+    }
+
+    &MenuBtnList {
+      gap: 9px;
+      margin-bottom: 0;
+    }
+
+    &SortText {
+      margin-bottom: 0;
+      text-align: start;
+    }
+
+    &Title {
+      font-size: 2.28rem;
+      margin-bottom: 35px;
+    }
+
+  }
+
+  @include desktop {
+
+    &Button {
+      padding: 15px 32px;
+      font-size: 1rem;
+      font-weight: 700;
+    }
+  }
+}
