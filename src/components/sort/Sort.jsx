@@ -1,10 +1,12 @@
 import { useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import cn from "classnames";
+
 import { IoCaretUpOutline } from "react-icons/io5";
 import { IoCaretDownOutline } from "react-icons/io5";
-import s from "./Sort.module.scss";
-import cn from "classnames";
-import { useDispatch, useSelector } from "react-redux";
 import { changeSort } from "../../redux/filterSlice";
+
+import s from "./Sort.module.scss";
 
 export const sort = [
   { name: "популярные", searchParams: "rating" },
@@ -13,6 +15,7 @@ export const sort = [
 ];
 
 function Sort() {
+  console.log("Render Sort");
   const [isVisible, setIsVisible] = useState(false);
   const dispatch = useDispatch();
   const currentSort = useSelector((state) => state.filter.sort);

@@ -45,15 +45,12 @@
   }
 
   &Button {
-    @include text;
     padding: 5px 10px;
     border: none;
-    border-radius: 30px;
+
     background-color: var(--bgc-gray-btn);
-    font-size: 0.8rem;
-    font-weight: 400;
+    color: var(--color-primary-text);
     letter-spacing: 0.24px;
-    transition: all 250ms ease-in-out;
 
     &:hover, &:focus, &Active {
       color: var(--color-white-text);

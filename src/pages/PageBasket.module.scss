@@ -33,6 +33,7 @@
   &Clear{
     cursor: pointer;
     display: flex;
+    gap: 8px;
     align-items: center;
     @include text;
     color: var(--bgc-gray-light-btn);
@@ -83,17 +84,12 @@
 }
 
 .button{
-  display: flex;
-  align-items: center;
-  @include text;
   color: var(--color-gray-btn-back-text);
   font-size: 1.14rem;
-  font-weight: 400;
-  line-height: normal;
   padding: 17px 38px;
   border: 1px solid var(--color-gray-btn-back);
-  border-radius: 30px;
-  cursor: pointer;
+  background-color: var(--bgc-primary);
+
 
   &Pay{
     background-color: var(--color-accent);

@@ -1,16 +1,21 @@
 import React from "react";
+import { useDispatch } from "react-redux";
+
 import { IoCloseCircleOutline } from "react-icons/io5";
 import { FiPlusCircle } from "react-icons/fi";
 import { FiMinusCircle } from "react-icons/fi";
-import s from "./BasketItem.module.scss";
 import {
   removeItem,
   quantityItemMinus,
   quantityItemPlus,
 } from "../../redux/basketSlice";
-import { useDispatch } from "react-redux";
+
+import Button from "../button/Button";
+
+import s from "./BasketItem.module.scss";
 
 function BasketItem({ id, title, imageUrl, price, type, size, quantity }) {
+  console.log("Render Basket");
   const dispatch = useDispatch();
 
   const handleIncreaseItem = (id) => {
@@ -26,7 +31,6 @@ function BasketItem({ id, title, imageUrl, price, type, size, quantity }) {
 
   return (
     <li className={s.basketItem}>
-      {/*<div>*/}
       <img
         className={s.basketItemImg}
         src={imageUrl}
@@ -34,33 +38,31 @@ function BasketItem({ id, title, imageUrl, price, type, size, quantity }) {
         width="80"
         height="80"
       />
-      <div className="cart__item-info">
-        <h3 className={s.basketItemTitle}>{title}</h3>
+      <div className={s.basketItemInfo}>
+        <h3>{title}</h3>
         <p className={s.basketItemText}>
           {type}, {size} см.
         </p>
       </div>
-      {/*</div>*/}
       <div className={s.basketItemCount}>
-        <button
+        <Button
+          variant="icon"
           disabled={quantity === 0}
           onClick={() => handleDecreaseItem(id)}
         >
           <FiMinusCircle className={s.basketItemCountIcon} />
-        </button>
+        </Button>
         <p>{quantity}</p>
-        <button onClick={() => handleIncreaseItem(id)}>
+        <Button variant="icon" onClick={() => handleIncreaseItem(id)}>
           <FiPlusCircle className={s.basketItemCountIcon} />
-        </button>
+        </Button>
       </div>
 
-      <b>{price * quantity} грн.</b>
-      {/*</div>*/}
+      <b className={s.basketItemPrice}>{price * quantity} грн.</b>
       <IoCloseCircleOutline
         onClick={() => handleDeleteItem(id)}
         className={s.basketItemDeleteIcon}
       />
-      {/*</div>*/}
     </li>
   );
 }

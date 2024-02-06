@@ -1,3 +1,4 @@
+import { memo } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import cn from "classnames";
 
@@ -7,6 +8,7 @@ import Sort from "../sort/Sort";
 import Loader from "../loader/Loader";
 
 import s from "./PizzaList.module.scss";
+import Button from "../button/Button";
 
 const categories = [
   "Все",
@@ -18,6 +20,7 @@ const categories = [
 ];
 
 function PizzaList() {
+  console.log("Render List");
   const dispatch = useDispatch();
   const pizzaItems = useSelector((state) => state.pizza.items);
   const isLoading = useSelector((state) => state.pizza.loading);
@@ -53,14 +56,23 @@ function PizzaList() {
           <ul className={s.pizzaMenuBtnList}>
             {categories.map((item, index) => (
               <li key={index}>
-                <button
+                <Button
+                  // variant="containedBlack"
                   onClick={() => dispatch(changeCategory(index))}
                   className={cn(s.pizzaButton, {
                     [s.pizzaButtonActive]: currentCategory === index,
                   })}
                 >
                   {item}
-                </button>
+                </Button>
+                {/*<button*/}
+                {/*  onClick={() => dispatch(changeCategory(index))}*/}
+                {/*  className={cn(s.pizzaButton, {*/}
+                {/*    [s.pizzaButtonActive]: currentCategory === index,*/}
+                {/*  })}*/}
+                {/*>*/}
+                {/*  {item}*/}
+                {/*</button>*/}
               </li>
             ))}
           </ul>
@@ -79,4 +91,4 @@ function PizzaList() {
   );
 }
 
-export default PizzaList;
+export default memo(PizzaList);

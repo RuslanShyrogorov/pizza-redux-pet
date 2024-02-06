@@ -1,27 +1,35 @@
-import { Link } from "react-router-dom";
-import { HiPlus } from "react-icons/hi";
-import cn from "classnames";
-import s from "./PizzaItem.module.scss";
-import { useState } from "react";
+import { memo, useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
+import cn from "classnames";
+
+import { HiPlus } from "react-icons/hi";
 import Loader from "../loader/Loader";
 import { addItem } from "../../redux/basketSlice";
+import s from "./PizzaItem.module.scss";
+import Button from "../button/Button";
 
 const typePizza = ["тонкое", "традиционное"];
 
 function PizzaItem({ id, title, imageUrl, price, sizes, types }) {
-  const [activeBtn, setActiveBtn] = useState(false);
+  console.log("Render Pizza Item");
   const [activeType, setActiveType] = useState(0);
   const [activeSize, setActiveSize] = useState(0);
   const dispatch = useDispatch();
   const isLoading = useSelector((state) => state.pizza.loading);
   const pizzas = useSelector((state) => state.basket.items);
-  const currentPizza = pizzas.find((item) => item.id === id);
-  const itemBasketQuantity = currentPizza ? currentPizza.quantity : 0;
+  const currentPizza = pizzas.find((item) => item.title === title);
+  const quantityAddedPizzaInBasket = pizzas.reduce((acc, item) => {
+    if (item.title === title) {
+      acc += item.quantity;
+    }
+    return acc;
+  }, 0);
+  const itemBasketQuantity = currentPizza ? quantityAddedPizzaInBasket : 0;
 
   const onClickAdd = () => {
+    const basketId = id + typePizza[activeType] + sizes[activeSize];
     const item = {
-      id,
+      id: basketId,
       title,
       imageUrl,
       price,
@@ -29,12 +37,13 @@ function PizzaItem({ id, title, imageUrl, price, sizes, types }) {
       size: sizes[activeSize],
     };
     dispatch(addItem(item));
-    setActiveBtn(true);
   };
+
   if (isLoading) return <Loader />;
+
   return (
     <article className={s.itemPizza}>
-      <Link to="#" className={s.itemPizzaContainer}>
+      <div className={s.itemPizzaContainer}>
         <img
           className={s.itemPizzaImg}
           src={imageUrl}
@@ -43,7 +52,7 @@ function PizzaItem({ id, title, imageUrl, price, sizes, types }) {
           height="260"
         />
         <h2 className={s.itemPizzaTitle}>{title}</h2>
-      </Link>
+      </div>
 
       <div className={s.itemPizzaSelect}>
         <ul className={s.itemPizzaTypeList}>
@@ -77,19 +86,30 @@ function PizzaItem({ id, title, imageUrl, price, sizes, types }) {
 
       <div className={s.itemPizzaBottom}>
         <p className={s.itemPizzaPrice}>от {price} грн</p>
-        <button
+        <Button
           onClick={() => onClickAdd()}
-          className={cn(s.button, { [s.buttonActive]: activeBtn })}
+          className={cn({ [s.buttonActive]: itemBasketQuantity })}
+          variant="contained"
         >
-          <HiPlus className={s.pizzaItemPriceIcon} />
+          <HiPlus />
           Добавить
           {itemBasketQuantity > 0 && (
             <i className={s.buttonQuantity}>{itemBasketQuantity}</i>
           )}
-        </button>
+        </Button>
+        {/*<button*/}
+        {/*  onClick={() => onClickAdd()}*/}
+        {/*  className={cn(s.button, { [s.buttonActive]: itemBasketQuantity })}*/}
+        {/*>*/}
+        {/*  <HiPlus />*/}
+        {/*  Добавить*/}
+        {/*  {itemBasketQuantity > 0 && (*/}
+        {/*    <i className={s.buttonQuantity}>{itemBasketQuantity}</i>*/}
+        {/*  )}*/}
+        {/*</button>*/}
       </div>
     </article>
   );
 }
 
-export default PizzaItem;
+export default memo(PizzaItem);

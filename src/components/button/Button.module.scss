@@ -1,1 +1,63 @@
 @import "../../styles";
+
+.button{
+  @include text;
+  display: flex;
+  align-items: center;
+  border-radius: 30px;
+  font-weight: 400;
+  font-size: 0.8rem;
+  transition: all 250ms ease-in-out;
+  cursor: pointer;
+  //border: none;
+
+  &Outlined{
+    justify-content: center;
+    gap: 8px;
+    padding: 5px 17px;
+    border: none;
+    color: var(--color-white-text);
+    background: var(--color-accent);
+  }
+
+  &Contained{
+    position: relative;
+    flex: 0 1 132px;
+    gap: 7px;
+    color: var(--color-accent);
+    padding: 14px 18px;
+    border: 1px solid var(--color-accent);
+    background: var(--bgc-primary);
+    transition: all 250ms ease-in-out;
+
+    &Black{
+      background-color: var(--bgc-btn-select);
+      color: var(--color-white-text);
+      text-align: center;
+
+    }
+  }
+
+  &Icon{
+    background: inherit;
+    border: none;
+    outline: none;
+  }
+
+}
+
+@media (any-hover: hover) {
+  .buttonContained:hover{
+    color: var(--bgc-primary);
+    background: var(--color-accent);
+  }
+}
+
+@include medium {
+  .button {
+    padding: 12px 23px;
+    font-size: 1rem;
+    font-weight: 700;
+    gap: 8px;
+  }
+}

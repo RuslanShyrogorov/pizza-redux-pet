@@ -8,11 +8,6 @@ const initialState = {
 const findPizzaInBasket = (arr, id) => {
   return arr.find((item) => item.id === id);
 };
-// const findPizzaInBasket = (arr, id, size, type) => {
-//   return arr.find(
-//     (item) => item.id === id && item.size === size && item.type === type,
-//   );
-// };
 
 const basketSlice = createSlice({
   name: "basket",

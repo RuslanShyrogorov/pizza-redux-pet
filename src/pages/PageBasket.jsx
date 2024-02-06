@@ -4,10 +4,11 @@ import { IoCartOutline } from "react-icons/io5";
 import { IoTrashOutline } from "react-icons/io5";
 import { IoIosArrowBack } from "react-icons/io";
 import BasketItem from "../components/basket/BasketItem";
-import s from "./PageBasket.module.scss";
 import { useDispatch, useSelector } from "react-redux";
 import { clearBasket } from "../redux/basketSlice";
 import EmptyBasket from "../components/basket/emptyBasket/EmptyBasket";
+import Button from "../components/button/Button";
+import s from "./PageBasket.module.scss";
 
 function PageBasket() {
   const dispatch = useDispatch();
@@ -60,13 +61,18 @@ function PageBasket() {
             </p>
           </div>
           <div className={s.basketBottomButtons}>
-            <Link to="/" className={cn(s.button)}>
-              <IoIosArrowBack />
-              <span>Вернуться назад</span>
+            <Link to="/">
+              <Button className={cn(s.button)} variant="outlined">
+                <IoIosArrowBack />
+                <span>Вернуться назад</span>
+              </Button>
             </Link>
-            <div className={cn(s.button, s.buttonPay)}>
+            <Button type="submit" className={cn(s.button, s.buttonPay)}>
               <span>Оплатить сейчас</span>
-            </div>
+            </Button>
+            {/*<div className={cn(s.button, s.buttonPay)}>*/}
+            {/*  <span>Оплатить сейчас</span>*/}
+            {/*</div>*/}
           </div>
         </div>
       </div>

@@ -1,5 +1,6 @@
 import { Link } from "react-router-dom";
 import s from "./EmptyBasket.module.scss";
+import Button from "../../button/Button";
 
 function EmptyBasket() {
   return (
@@ -13,11 +14,13 @@ function EmptyBasket() {
         className={s.emptyBasketImg}
         src="/assets/empty-basket.png"
         alt="Person go shopping"
-        width="300"
-        height="255"
+        width="600"
+        height="510"
       />
-      <Link className={s.emptyBasketBtn} to="/">
-        <span>Вернуться назад</span>
+      <Link to="/">
+        <Button variant="containedBlack" className={s.emptyBasketBtn}>
+          <span>Вернуться назад</span>
+        </Button>
       </Link>
     </div>
   );
